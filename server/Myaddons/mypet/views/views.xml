@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="Pet_act" model="ir.actions.act_window">
+            <field name="name">Pet action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">my.pet</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_content_create">
+                My pet!
+              </p>
+            </field>
+        </record>
+        <record id="Pet_tree" model="ir.ui.view">
+            <field name="name">Pet</field>
+            <field name="model">my.pet</field>
+            <field name="arch" type="xml">
+                <tree string="Pet">
+                    <field name="name"/>
+                    <field name="nickname"/>
+                    <field name="age"/>
+                    <field name="weight"/>
+                    <field name="dob"/>
+                    <field name="gender"/>
+                    <field name="owner_id"/>
+                </tree>
+            </field>
+        </record>
+        <menuitem id="Pet_menu"
+                  name="Pet"
+                  action="Pet_act"
+                  sequence="10"/>
+    </data>
+</odoo>
