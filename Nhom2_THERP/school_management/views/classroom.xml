@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+        <record id="class_form_view" model="ir.ui.view">
+            <field name="name">school.class.form.view</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group name="teacher" string="Homeroom Teacher">
+                                <field name="teacher_homeroom"/>
+                                <field name="phone_teacher"/>
+                                <field name="email_teacher"/>
+                            </group>
+                            <group name="class_officers" string="Class Officers">
+                                <field name="class_monitor"/>
+                                <field name="phone_class_monitor"/>
+                                <field name="email_class_monitor"/>
+                                <field name="vice_monitor"/>
+                                <field name="phone_vice_monitor"/>
+                                <field name="email_vice_monitor"/>
+                                <field name="secretary"/>
+                                <field name="phone_secretary"/>
+                                <field name="email_secretary"/>
+                            </group>
+                            <group name="status" string="Status">
+                                <field name="total"/>
+                                <field name="course"/>
+                                <field name="school_year"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="action"  widget='one2many'>
+                                    <tree>
+                                         <field name="name_action"/>
+                                         <field name="location"/>
+                                         <field name="time"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name_action"/>
+                                        </group>
+                                        <group>
+                                            <field name="location"/>
+                                            <field name="time"/>
+                                        </group>
+
+                                    </form>
+                                </field>
+                                <field name="note"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="class_tree_view" model="ir.ui.view">
+            <field name="name">class.tree.view</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <tree string="ology_class" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="teacher_homeroom"/>
+                    <field name="class_monitor"/>
+                    <field name="vice_monitor"/>
+                    <field name="secretary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="class_act" model="ir.actions.act_window">
+            <field name="name">Class</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.class</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_content_create">
+                    Create your first class!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

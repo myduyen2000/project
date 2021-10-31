@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <menuitem id="school_root"
+                  name="School"
+                  sequence="10"/>
+
+        <menuitem name="Department"
+                  id="department_parent"
+                  parent="school_root"
+                  sequence="1"/>
+
+        <menuitem name="Department"
+                  id="department"
+                  parent="department_parent"
+                  action="department_act"
+                  sequence="1"/>
+
+        <menuitem name="Ology"
+                  id="ology"
+                  parent="department_parent"
+                  action="ology_act"
+                  sequence="2"/>
+
+        <menuitem name="Major"
+                  id="major"
+                  parent="department_parent"
+                  action="major_act"
+                  sequence="3"/>
+
+        <menuitem name="Class"
+                  id="class"
+                  parent="department_parent"
+                  action="class_act"
+                  sequence="4"/>
+
+        <menuitem id="lecturer"
+                  name="Lecturer"
+                  parent="school_root"
+                  action="lecturer_action"
+                  sequence="5"/>
+
+        <menuitem id="student"
+                  parent="school_root"
+                  name="Student"
+                  action="action_student"
+                  sequence="6"/>
+
+<!--        <menuitem id="term"-->
+<!--                  parent="school_root"-->
+<!--                  name="Term"-->
+<!--                  action="term_act"-->
+<!--                  sequence="6"/>-->
+    </data>
+</odoo>

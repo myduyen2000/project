@@ -1,0 +1,160 @@
+<odoo>
+    <data>
+        <record id="student_search_form_view" model="ir.ui.view">
+            <field name="name">student.search.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <search string="Student">
+                    <field name="student_id"/>
+                    <field name="first_name"/>
+                    <field name="middle_name"/>
+                    <field name="last_name"/>
+                    <field name="sdt"/>
+                    <field name="email"/>
+                    <field name="ngay_sinh"/>
+                    <field name="cmnd"/>
+                    <field name="gioi_tinh"/>
+                    <field name="chuyen_nganh"/>
+                    <field name="nam_nhap"/>
+                    <field name="he_dt"/>
+                </search>
+            </field>
+        </record>
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">student.tree.view</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="student_id"/>
+                    <field name="name"/>
+                    <field name="sdt"/>
+                    <field name="email"/>
+                    <field name="ngay_sinh"/>
+                    <field name="cmnd"/>
+                    <field name="gioi_tinh"/>
+                    <field name="chuyen_nganh"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form.view</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1>
+                            <field name="student_id" readonly="1"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Name" required="1" invisible="1"/>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px">
+                                        <field name="first_name" required="1" placeholder="First Name"/>
+                                    </td>
+                                    <td style="padding-right:10px">
+                                        <field name="middle_name" placeholder="Middle Name"/>
+                                    </td>
+                                    <td style="padding-right:10px">
+                                        <field name="last_name" placeholder="Last Name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h2>
+                        <group>
+                            <group>
+                                <field name="gioi_tinh"/>
+                                <field name="ngay_sinh"/>
+                            </group>
+                            <group>
+                                <field name="sdt"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Private Information">
+                                <group>
+                                    <group>
+                                        <field name="dia_chi_thuong_tru"/>
+                                        <field name="dia_chi_tam_tru"/>
+                                        <field name="dan_toc"/>
+                                        <field name="ton_giao"/>
+                                    </group>
+                                    <group>
+                                        <field name="cmnd"/>
+                                        <field name="ident_date"/>
+                                        <field name="ident_place"/>
+                                        <field name="stk"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Education Information">
+                                <group>
+                                    <group>
+                                        <field name="nam_nhap"/>
+                                        <field name="nam_ra"/>
+                                        <field name="ten_giao"/>
+                                    </group>
+                                    <group>
+                                        <field name="he_dt"/>
+                                        <field name="so_tc"/>
+                                        <field name="status"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="khoa"/>
+                                    <field name='nganh_hoc'>
+                                        <tree string="tree">
+                                            <field name="name"/>
+                                            <field name="number_of_credits"/>
+                                            <field name="required_credits"/>
+                                            <field name="selected_credits"/>
+                                        </tree>
+                                    </field>
+                                    <field name="chuyen_nganh">
+                                        <tree string="tree">
+                                            <field name="name"/>
+                                            <field name="quantity_SV"/>
+                                            <field name="quantity_GV"/>
+                                        </tree>
+                                    </field>
+                                    <field name="lop"/>
+                                    <field name="bang_cap"/>
+                                    <field name="sinh_nam"/>
+                                    <field name="notes" string="Description"/>
+                                </group>
+                            </page>
+                            <page string="Family Information">
+                                <group>
+                                    <field name="dai_dien"/>
+                                    <field name="dia_chi"/>
+                                    <field name="lien_he"/>
+                                </group>
+                            </page>
+                            <page string="Other Information">
+                                <group>
+                                    <field name="xe"/>
+                                    <field name="ktx"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                            (0, 0, {'view_mode': 'tree', 'view_id': ref('student_tree_view')}),
+                            (0, 0, {'view_mode': 'form', 'view_id': ref('student_form_view')})]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record id="term_form_view" model="ir.ui.view">
+            <field name="name">school.term.form.view</field>
+            <field name="model">school.term</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="mahp"/>
+                            <h3><field name="mahp"/></h3>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="kyhoc"/>
+                                <field name="tenhp"/>
+                                <field name="sotc"/>
+                                <field name="loaihp"/>
+                                <field name="sotlt"/>
+                                <field name="sotth"/>
+                            </group>
+                            <group>
+                                <field name="tgbd"/>
+                                <field name="tgkt"/>
+                                <field name="lich"/>
+                                <field name="phong"/>
+                                <field name="ngaythi"/>
+                                <field name="ghichu"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="_tree_view" model="ir.ui.view">
+            <field name="name">term.tree.view</field>
+            <field name="model">school.term</field>
+            <field name="arch" type="xml">
+                <tree string="Term" default_order="create_date asc">
+                    <field name="mahp"/>
+                    <field name="kyhoc"/>
+                    <field name="tenhp"/>
+                    <field name="sotc"/>
+                    <field name="loaihp"/>
+                    <field name="sotlt"/>
+                    <field name="sotth"/>
+                    <field name="tgbd"/>
+                    <field name="tgkt"/>
+                    <field name="lich"/>
+                    <field name="phong"/>
+                    <field name="ngaythi"/>
+                    <field name="ghichu"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="term_act" model="ir.actions.act_window">
+            <field name="name">Term</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.term</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_content_create">
+                Create your first term!
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>

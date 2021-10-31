@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_form_view_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.view.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <h1>
+                    <field name="lecturer_id" readonly="1"/>
+                </h1>
+                <h2>
+                    <field name="name" placeholder="Name" required="1" invisible="1"/>
+                    <table>
+                        <tr>
+                            <td style="padding-right:10px">
+                                <field name="first_name" required="1" placeholder="First Name"/>
+                            </td>
+                            <td style="padding-right:10px">
+                                <field name="middle_name" placeholder="Middle Name"/>
+                            </td>
+                            <td style="padding-right:10px">
+                                <field name="last_name" placeholder="Last Name"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h2>
+                <h2>
+                    <field name="job" placeholder="Job Position"/>
+                </h2>
+                <xpath expr="//field[@name='category_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='mobile_phone']" position="attributes">
+                    <attribute name="string">Mobile</attribute>
+                </xpath>
+                <xpath expr="//field[@name='job_title']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="mobile_phone" position="after">
+                    <field name="email"/>
+                </field>
+                <xpath expr="//field[@name='coach_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="department_id" position="after">
+                    <field name="homeroom_class"/>
+                </field>
+                <field name="parent_id" position="after">
+                    <field name="date_start"/>
+                </field>
+                <field name="date_start" position="after">
+                    <field name="date_end"/>
+                </field>
+                <xpath expr="//field[@name='department_id']" position="attributes">
+                    <attribute name="string">Department</attribute>
+                </xpath>
+                <xpath expr="//label[@for='km_home_work']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//div[@name='div_km_home_work']" position="attributes">
+                   <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='hr_settings']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='public']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='study_field']" position="attributes">
+                    <attribute name="string">Major</attribute>
+                 </xpath>
+                 <xpath expr="//group[@name='managers']" position="attributes">
+                   <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <xpath expr="//div[@id='o_employee_right']" position="attributes">
+                   <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <group name="departure" position="after">
+                     <group name="scientific" string="Scientific Background">
+                         <group name="university" string="University">
+                             <field name="graduate_major" string="Graduated Major"/>
+                             <field name="graduated_year" string="Graduated Year"/>
+                             <field name="graduated_in" string="Graduated In"/>
+                         </group>
+                         <group name="after_university" string="After University">
+                             <field name="degree" string="Degree"/>
+                             <field name="recognition_year" string="Recognition Year"/>
+                             <field name="recognition_in" string="Recognition In"/>
+                             <field name="major_teaching" string="Major Teaching"/>
+                         </group>
+                     </group>
+                 </group>
+                 <group name="scientific" position="after">
+                     <group name="status" string="Status">
+                         <group name="language">
+                             <field name="language" string="Language"/>
+                             <field name="language_level" string="Language Level"/>
+                             <field name="work_status" string="Work Status"/>
+                         </group>
+                         <group name="party">
+                             <field name="day_into_party" string="Day Into Party"/>
+                             <field name="into_party_at" string="Into Party At"/>
+                             <field name="is_the_union" string="Is The Union?"/>
+                         </group>
+                     </group>
+                 </group>
+                 <field name="tz" position="after">
+                     <field name="additional_note"/>
+                 </field>
+                 <xpath expr="//field[@name='private_email']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <xpath expr="//field[@name='phone']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <xpath expr="//field[@name='bank_account_id']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <xpath expr="//field[@name='address_home_id']" position="attributes" >
+                    <attribute name="string">Permanent Address</attribute>
+                 </xpath>
+                 <field name="address_home_id" position="after">
+                     <field name="temporary_address"/>
+                 </field>
+                 <field name="temporary_address" position="after">
+                     <field name="bank_acc_id"/>
+                 </field>
+                <field name="bank_acc_id" position="before">
+                    <field name="blood_group"/>
+                </field>
+                <field name="identification_id" position="after">
+                    <field name="ident_date"/>
+                </field>
+                <field name="ident_date" position="after">
+                    <field name="ident_place"/>
+                </field>
+                 <xpath expr="//field[@name='passport_id']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                 </xpath>
+                <field name="country_of_birth" position="after">
+                    <field name="age"/>
+                </field>
+                <field name="age" position="after">
+                    <field name="religion"/>
+                </field>
+                <field name="religion" position="after">
+                    <field name="nation"/>
+                </field>
+                <field name="children" position="after">
+                    <field name="study_at"/>
+                </field>
+                <field name="children" position="before">
+                     <field name="family_status"/>
+                </field>
+                <xpath expr="//page[@name='personal_information']/group/group[7]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="lecturer_action" model="ir.actions.act_window">
+            <field name="name">Lecturer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form,kanban,activity</field>
+        </record>
+    </data>
+</odoo>

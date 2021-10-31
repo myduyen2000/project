@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="major_form_view" model="ir.ui.view">
+            <field name="name">school.major.form.view</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="major_id" readonly="1"/>
+                            </h1>
+                            <h2>
+                                <field name="name" placeholder="Major Name"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="ology_id"/>
+                            </group>
+                            <group>
+                                <field name="quantity_SV"/>
+                                <field name="quantity_GV"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="major_tree_view" model="ir.ui.view">
+            <field name="name">school.major.tree.view</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <tree string="major" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="ology_id"/>
+                    <field name="quantity_SV"/>
+                    <field name="quantity_GV"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="major_act" model="ir.actions.act_window">
+            <field name="name">Major</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.major</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_content_create">
+                    Create your first major!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
