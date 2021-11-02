@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="my_patients_form_view" model="ir.ui.view">
+            <field name="name">my.patients.form.view</field>
+            <field name="model">my.patients</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="benhnhan_id" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="bn_image" string="Ảnh thẻ" widget="image"/>
+                            </group>
+                            <group>
+                                <field name="ten"/>
+                                <field name="tuoi"/>
+                            <group>
+                                <field name="nation"  widget='one2many'>
+                                    <tree>
+                                         <field name="name_nation"/>
+                                    </tree>
+                                    <form>
+                                         <field name="name_nation"/>
+                                    </form>
+                                </field>
+                            </group>
+                                <group>
+                                <field name="gender"  widget='one2many'>
+                                    <tree>
+                                         <field name="name_gender"/>
+                                    </tree>
+                                    <form>
+                                         <field name="name_gender"/>
+                                    </form>
+                                </field>
+                            </group>
+                                <field name="ngaysinh"/>
+                                <field name="diachi"/>
+                                <field name="nghenghiep"/>
+                                <field name="noilv"/>
+                                <field name="sdthoai"/>
+                                <field name="cmnd"/>
+                            </group>
+                        </group>
+                        <group name="cccn">
+                            <group>
+                                <field name="tgvaovien"/>
+                                <field name="lydo"/>
+                                <field name="khoadt"/>
+                                <field name="kham"/>
+                                <field name="phong" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="chieucao"/>
+                                <field name="cannang"/>
+                                <field name="mau"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="general_information" string="Thông tin thẻ BHYT">
+                                <group name="ttbh">
+								    <group>
+                                        <field name="dt"/>
+                                        <field name="sotheBHYT"/>
+                                        <field name="noicap"/>
+                                        <field name="tuyen"/>
+                                    </group>
+                                    <group>
+                                        <field name="tungay"/>
+                                        <field name="denngay"/>
+                                        <field name="du"/>
+                                        <field name="khuvuc"/>
+								    </group>
+                                </group>
+							</page>
+							<page name="additional_information" string="Thông tin người thân">
+								<group name="ttnt">
+                                    <group>
+									    <field name="tennt"/>
+                                        <field name="quanhe"/>
+                                    </group>
+                                    <group>
+                                        <field name="sdt"/>
+                                        <field name="diac"/>
+                                    </group>
+								</group>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="my_patients_tree_view" model="ir.ui.view">
+            <field name="name">my.patients.tree.view</field>
+            <field name="model">my.patients</field>
+            <field name="arch" type="xml">
+                <tree string="Patients" default_order="create_date asc">
+                    <field name="benhnhan_id"/>
+                    <field name="ten"/>
+                    <field name="tuoi"/>
+                    <field name="gioitinh"/>
+                    <field name="qg"/>
+                    <field name="diachi"/>
+                    <field name="cmnd"/>
+                    <field name="mau"/>
+                    <field name="tgvaovien"/>
+                    <field name="khoadt"/>
+                </tree>
+            </field>
+        </record>
+        <record id="my_patients_search_view" model="ir.ui.view">
+            <field name="name">my_patients_search_view</field>
+            <field name="model">my.patients</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Patients Search">
+                    <field name="ten" string="Họ và tên:"/>
+                    <field name="khoadt" string="Khoa điều trị:"/>
+                    <field name="benhnhan_id" string="Mã bệnh nhân:"/>
+                    <group expand='0' string='Filters'>
+                        <filter name="male_filter" string="Nam" domain="[('gioitinh', '=',  'nam')]"/>
+                        <filter name="female_filter" string="Nữ" domain="[('gioitinh', '=',  'nu')]"/>
+                    </group>
+                    <group expand='0' string='Group by...'>
+                        <filter string='Giới tính' name="gioitinh_group" context="{'group_by': 'gioitinh'}"/>
+                        <filter string='Khoa điều trị' name="khoa_group" context="{'group_by': 'khoadt'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="my_patients_act" model="ir.actions.act_window">
+            <field name="name">QLBN</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">my.patients</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_content_create">
+                Welcome!
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="hospital_root"
+                  name="Quản lý bệnh viện"
+                  sequence="10"/>
+        <menuitem id="my_patients_menu"
+                  name="Quản lý bệnh nhân"
+                  parent="hospital_root"
+                  action="my_patients_act"
+                  sequence="10"/>
+    </data>
+</odoo>
